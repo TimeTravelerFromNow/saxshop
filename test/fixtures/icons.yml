@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fa_class: MyString
+  fa_icon: MyString
+
+two:
+  fa_class: MyString
+  fa_icon: MyString

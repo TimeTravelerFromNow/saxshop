@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manafacturer: MyString
+  model_type: MyString
+  serial_no: MyString
+  condition: MyString
+  year: 2024-05-10 15:22:58
+  price: 1
+  details: MyText
+
+two:
+  manafacturer: MyString
+  model_type: MyString
+  serial_no: MyString
+  condition: MyString
+  year: 2024-05-10 15:22:58
+  price: 1
+  details: MyText

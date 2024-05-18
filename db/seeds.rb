@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+["Saxes and other Woodwinds", "Brass", "Guitars and Amps", "Orchestral Strings", "Miscellaneous"].each do |category_name|
+  c = Category.find_or_create_by!(slug: category_name.parameterize)
+  if c
+    c.title = category_name
+    c.save
+  end
+end

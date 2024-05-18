@@ -1,0 +1,22 @@
+<%= form_with(model: flickr_photo) do |form| %>
+  <% if flickr_photo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(flickr_photo.errors.count, "error") %> prohibited this flickr_photo from being saved:</h2>
+
+      <ul>
+        <% flickr_photo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :embed, style: "display: block" %>
+    <%= form.text_area :embed %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

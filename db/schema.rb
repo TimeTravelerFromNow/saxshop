@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_13_195411) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_18_185054) do
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flickr_photos", force: :cascade do |t|
+    t.text "embed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "icons", force: :cascade do |t|
     t.string "fa_class"
     t.string "fa_icon"
@@ -26,6 +39,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_13_195411) do
     t.datetime "year"
     t.integer "price"
     t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "makes", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

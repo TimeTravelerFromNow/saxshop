@@ -24,6 +24,11 @@
     <%= instrument.year %>
   </p>
 
+  <% if !instrument.year.present? %>
+    <strong>Year or decade:</strong>
+    <%= instrument.year_est %>
+  <% end %>
+
   <p>
     <strong>Price:</strong>
     <%= instrument.price %>

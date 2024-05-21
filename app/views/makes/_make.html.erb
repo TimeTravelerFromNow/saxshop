@@ -1,12 +1,45 @@
 <div id="<%= dom_id make %>">
-  <p>
-    <strong>Title:</strong>
-    <%= make.title %>
-  </p>
+<div align="center">
+<table id="<%= make.slug %>" border="2" cellpadding="5" cellspacing="5" width="930">
+<tbody>
+  <tr>
+<th colspan="8" bgcolor="#CDA54D" scope="col"> <h1 align="center"><strong><%= make.title %></strong></h1>
+</th>
+</tr>
+        <tr>
+      <td width="113" bgcolor="#999999"><div align="center">Manufacturer</div></td>
+          <td width="96" bgcolor="#999999"><div align="center">Model</div></td>
+          <td width="61" bgcolor="#999999"><div align="center">Serial #</div></td>
+          <td width="75" bgcolor="#999999"><div align="center">Condition</div></td>
+          <td width="49" bgcolor="#999999"><div align="center">Year</div></td>
+          <td width="50" bgcolor="#999999"><div align="center">Price</div></td>
+          <td width="155" bgcolor="#999999"><div align="center">Comments</div></td>
+          <td width="190" bgcolor="#666666"><div align="center">Photos</div></td>
+    </tr>
+        <% make.instruments.each do |i| %>
+          <tr>
+          <td bgcolor="#999999" width="113"><div align="center"> <%= i.manafacturer %></div></td>
+          <td bgcolor="#999999" width="96"><div align="center">  <%= i.model_type %></div></td>
+          <td bgcolor="#999999" width="61"><div align="center">  <%= i.serial_no %></div></td>
+          <td bgcolor="#999999" width="75"><div align="center">  <%= i.condition %></div></td>
+          <td bgcolor="#999999" width="49"><div align="center">  <%= i.year.present? ? i.year.year : i.year_est %></div></td>
+          <td bgcolor="#999999" width="50"><div align="center">  <%= i.price %></div></td>
+          <td bgcolor="#999999" width="155"><div align="center"> <%= i.details %></div></td>
+          <td bgcolor="#666666" width="190"><div align="center"> photos </div></td>
+          </tr>
+        <% end %>
 
-  <p>
-    <strong>Slug:</strong>
-    <%= make.slug %>
-  </p>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody></table>
+</div>
 
 </div>

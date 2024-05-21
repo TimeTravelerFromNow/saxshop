@@ -8,3 +8,16 @@
   <%= link_to "Show this category", @category %> |
   <%= link_to "Back to categories", categories_path %>
 </div>
+<hr>
+
+<h3>Create a Make/Subclass</h3>
+<%= form_with(model: [@category, Make]) do |form| %>
+
+  <%= form.label :slug %>
+  <%= form.text_field :slug %>
+  <br>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.submit 'create', class: 'btn btn-secondary'%>
+<% end %>

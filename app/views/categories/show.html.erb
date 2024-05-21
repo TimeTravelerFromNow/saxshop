@@ -2,6 +2,14 @@
 
 <%= render @category %>
 
+<ul>
+<% @category.makes.each do |make| %>
+  <li>
+    <%= link_to make.title, category_make_path(@category,make) %>
+  </li>
+<% end %>
+</ul>
+
 <div>
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :makes
+
+  resources :makes, param: :slug do
+    resources :instruments
+  end
   get 'dashboard/index'
   get 'dashboard' => 'dashboard#index'
   resources :flickr_photos
@@ -17,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'categories' => 'categories#index', as: 'categories'
   resources :categories, except: [:index], param: :slug, path: '/' do
-    resources :makes
+    resources :makes, param: :slug do
+      resources :instruments
+    end
   end
 end

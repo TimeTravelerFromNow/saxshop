@@ -36,6 +36,8 @@ class InstrumentsController < ApplicationController
 
   # PATCH/PUT /instruments/1 or /instruments/1.json
   def update
+    @instrument.make = Make.find_by!(slug: params[:make_slug]) if params[:make_slug]
+
     respond_to do |format|
       if @instrument.update(instrument_params)
         format.html { redirect_to instrument_url(@instrument), notice: "Instrument was successfully updated." }
@@ -65,6 +67,6 @@ class InstrumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def instrument_params
-      params.require(:instrument).permit(:manafacturer, :model_type, :serial_no, :condition, :year, :price, :details)
+      params.require(:instrument).permit(:manafacturer, :model_type, :serial_no, :condition, :year, :year_est, :price, :details)
     end
 end

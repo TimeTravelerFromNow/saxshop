@@ -4,6 +4,9 @@ class Category < ApplicationRecord
   validates(:slug, :title, presence: true)
   validates_uniqueness_of :slug
 
+  has_many :makes, dependent: :destroy
+  has_many :instruments, through: :makes
+
   def to_param
     slug
   end

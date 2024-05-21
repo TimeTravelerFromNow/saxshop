@@ -6,6 +6,8 @@ class Make < ApplicationRecord
 
   belongs_to :category
 
+  has_many :instruments, dependent: :nullify
+
   def to_param
     slug
   end

@@ -22,6 +22,7 @@ class MakesController < ApplicationController
   # POST /makes or /makes.json
   def create
     @make = Make.new(make_params)
+    @make.category = Category.find_by(slug: params[:category_slug]) if params[:category_slug]
 
     respond_to do |format|
       if @make.save
@@ -60,7 +61,7 @@ class MakesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_make
-      @make = Make.find(params[:id])
+      @make = Make.find_by!(slug: params[:slug])
     end
 
     # Only allow a list of trusted parameters through.

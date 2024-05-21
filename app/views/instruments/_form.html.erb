@@ -31,9 +31,14 @@
     <%= form.text_field :condition %>
   </div>
 
-  <div>
+  <div style="border-style: solid;">
     <%= form.label :year, style: "display: block" %>
     <%= form.datetime_field :year %>
+
+    <%= form.label :year_est, style: "display: block" %>
+    <small>non-exact date (ex: 1970's)</small>
+    <br>
+    <%= form.text_field :year_est %>
   </div>
 
   <div>

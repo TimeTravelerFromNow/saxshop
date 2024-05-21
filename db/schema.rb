@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_19_022256) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_21_043843) do
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -42,6 +42,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_19_022256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "year_est"
+    t.integer "make_id"
+    t.index ["make_id"], name: "index_instruments_on_make_id"
   end
 
   create_table "makes", force: :cascade do |t|
@@ -49,6 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_19_022256) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_makes_on_category_id"
   end
 
+  add_foreign_key "instruments", "makes"
+  add_foreign_key "makes", "categories"
 end

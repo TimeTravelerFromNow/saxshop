@@ -9,12 +9,22 @@
 #   end
 
 ["Saxes and other Woodwinds", "Brass", "Guitars and Amps", "Orchestral Strings", "Miscellaneous"].each do |category_name|
-  c = Category.find_or_create_by!(slug: category_name.parameterize)
+  c = Category.find_or_create_by!(slug: category_name.parameterize, title: category_name)
   if c
     c.title = category_name
     c.save
   end
 end
+
+site_settings = SiteSetting.create(motd: 'Welcome to SteveGraySaxes.com',
+   about:'Steve Recommends:
+Teachers (coming soon)
+Rentals (coming soon)
+Santa Cruz Jazz Society
+My Flikr Slide Show (featuring instruments that are for sale)
+Welcome to SteveGraySaxes.com',
+google_tag:'paste your google html tag here.'
+) if !SiteSetting.first
 
 if Rails.env == 'development' # safety for production
 

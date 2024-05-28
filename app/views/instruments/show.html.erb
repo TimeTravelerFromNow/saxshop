@@ -6,5 +6,5 @@
   <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %> |
   <%= link_to "Back to instruments", instruments_path %>
 
-  <%= button_to "Destroy this instrument", @instrument, method: :delete %>
+  <%= button_to "delete this instrument", @instrument, method: :delete, data: {turbo_confirm: 'are you sure?'}, class:'btn btn-danger' %>
 </div>

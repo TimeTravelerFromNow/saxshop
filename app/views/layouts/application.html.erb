@@ -11,17 +11,17 @@
   </head>
 
   <body class='container'>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light pt-5">
 
       <div class="container-fluid">
-  <a class="navbar-brand" href="<%= root_path %>">Steve Gray's</a>
+        <%= link_to "Steve Gray's", root_path, class:"card navbar-brand root-link bg-light", style:"border-radius: 10px; border-width:0px; padding: 1%;" %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-md-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <%= link_to "dashboard", dashboard_index_path, class:" nav-link" %>
       </li>
@@ -50,7 +50,7 @@
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"> <%= link_to "home", root_path, class:"nav-link px-2 text-muted" %></li>
       </ul>
-      <%= link_to "dashboard", dashboard_index_path, class: 'dashboard-btn nav-link active btn btn-primary' %>
+      <%= link_to "dashboard", dashboard_index_path, class: 'dashboard-btn nav-link btn btn-primary' %>
 
       <p class="text-center text-muted">© 2024
         steve gray </p>

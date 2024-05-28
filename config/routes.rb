@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  resources :site_settings
+  get 'site/home'
+  get 'site/map'
+  get 'sites' => 'site_settings#index'
+  get 'site/google_tag'
+
+  get 'makes/:slug/pick' => 'makes#pick', param: :slug, as: :make_pick
 
   resources :makes, param: :slug do
     resources :instruments
   end
+
+
   get 'dashboard/index'
   get 'dashboard' => 'dashboard#index'
   resources :flickr_photos
@@ -16,7 +25,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   # Defines the root path route ("/")
-  root "instruments#index"
+  root "site#home"
 
   get 'categories' => 'categories#index', as: 'categories'
   resources :categories, except: [:index], param: :slug, path: '/' do

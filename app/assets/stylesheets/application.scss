@@ -17,59 +17,16 @@
 @import "bootstrap";
 
 :root {
-  background-color: #606060!important;
-  .top-bar {
+  .dashboard-btn {
+    max-width: 80px;
+    position: absolute;
 
-
-      ul li::after{
-        content: '';
-        width: 0%;
-        height: 2px;
-        background: white;
-        display: block;
-        margin: auto;
-        transition: 0.4s;
-      }
-       ul li:hover::after {
-        width: 100%;
-      }
-      ul li{
-        flex: 1;
-        text-align: center;
-        letter-spacing: 5px;
-
-      }
-      ul li{
-        list-style: none;
-        display: inline-block;
-        padding: 8px 40px;
-        position: bottom;
-      }
-
-      navbar-nav{
-        display: flex;
-        // padding-top: 10%;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .navbar-toggler {
-
-        color: white;
-        text-decoration-color: white;
-
-          background-color: white;
-        .navbar-toggler-icon {
-        }
-      }
-      justify-content:center;
-
-      border-color: white;
-      background: black;
-
-      #navbarSupportedContent {
-       justify-content: center;
-      }
-    }
+            right: calc(50% - 80px);
+            opacity: 0.0;
+            &:hover {
+              opacity: 0.5;
+            }
+  }
 }
 
 #category-makes {
@@ -82,7 +39,7 @@
 }
 
 #navbar ul a:hover {
-	background-color: #606060!important;
+	//background-color: #606060!important;
 	color: #FFFFFF!important;
 }
 
@@ -110,4 +67,10 @@
         border-style: ridge;
         @extend .p-3 !optional;
         z-index: 1;
+
+         ul a:hover {
+        	background-color: rgba(244,244,244,0.1);
+        	//color: #FFFFFF!important;
+        }
+
 }

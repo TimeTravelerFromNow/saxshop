@@ -1,0 +1,6 @@
+
+<% if @site_setting.google_tag.present? %>
+  <%= @site_setting.google_tag.html_safe %>
+<% else %>
+  add a google tag from the admin dashboard
+<% end %>

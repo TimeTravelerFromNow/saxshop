@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  google_tag: MyText
+  motd: MyString
+  about: MyText
+  contact: MyString
+
+two:
+  google_tag: MyText
+  motd: MyString
+  about: MyText
+  contact: MyString

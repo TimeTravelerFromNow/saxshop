@@ -1,0 +1,17 @@
+
+<h2> add to <%= @make.title %></h2>
+
+<div class="container-md">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<% Instrument.all.where(make: nil).each do |ins| %>
+  <div class='col'>
+  <%= form_with(model: [@make, ins]) do |form| %>
+    <%= form.hidden_field :make_slug, value: @make.slug %>
+    <div class='form-group '>
+    <%= form.submit  ins.manafacturer + ' | ' + ins.model_type , class:'btn btn-secondary mr-3'%>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+</div>
+</div>

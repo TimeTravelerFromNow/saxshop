@@ -4,15 +4,8 @@
 
 <br>
 
-<% Instrument.all.where(make: nil).each do |ins| %>
-  <%= render ins %>
-  <%= form_with(model: [@make, ins]) do |form| %>
-    <%= form.hidden_field :make_slug, value: @make.slug %>
-    <%= form.submit "sort into #{@make.title}", class:'btn btn-success'%>
-  <% end %>
-<% end %>
-
 <div>
   <%= link_to "Show this make", @make %> |
-  <%= link_to "Back to makes", makes_path %>
+  <%= link_to "Back to makes", makes_path %> |
+  <%= link_to 'add to', make_pick_path(@make) %>
 </div>

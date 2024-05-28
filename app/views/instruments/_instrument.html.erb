@@ -1,8 +1,11 @@
 <div id="<%= dom_id instrument %>">
-
-  <strong>
-  <%= instrument.make.title if instrument.make.present? %>
-  </strong>
+  <% if instrument.make.present? %>
+  belongs to:
+  <h4 class="make-link">
+  <%= instrument.make.title %>
+  </h4>
+  <% end %>
+  
   <p>
     <strong>Manafacturer:</strong>
     <%= instrument.manafacturer %>

@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  before_action :set_make, only: %i[ show edit update destroy ]
+  before_action :set_make, only: %i[ show edit update destroy pick ]
 
   # GET /makes or /makes.json
   def index
@@ -8,6 +8,10 @@ class MakesController < ApplicationController
 
   # GET /makes/1 or /makes/1.json
   def show
+  end
+
+  def pick
+
   end
 
   # GET /makes/new

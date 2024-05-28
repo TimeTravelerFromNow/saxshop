@@ -1,44 +1,41 @@
 
-<div id="category-makes"  style="max-width: 200px;">
-
-  <div class="container justify-center">
-
-  <% @categories.each do |c| %>
-    <%= link_to c.title, edit_category_path(c), class:"category-link"  %>
-    <ul>
-    <% c.makes.each do |m| %>
-    <li>
-      <%= link_to m.title, edit_make_path(m), class: "make-link" %>
-      </li>
-    <% end %>
-    </ul>
-    <br>
-  <% end %>
-  </div>
-
-</div>
 
 <div class="row justify-content-center">
-    <div class="col-4 m-3">
-      <div class="card">
-        <%= link_to "flickr_photos", flickr_photos_path, class:'btn btn-secondary' %>
+    <div  id="category-makes"  class="card col-4 m-3">
+      <h3> edit categories and makes</h3>
+        <% @categories.each do |c| %>
+          <div class='border m-1'>
+          /<%= c.slug %><br>
 
-      </div>
-      One of two columns
+          <%= link_to c.title + " (#{c.instruments.count.to_s})", edit_category_path(c), class:"btn btn-secondary"  %>
+          <ul>
+          <% c.makes.each do |m| %>
+          <li>
+            <%= link_to m.title + " (#{m.instruments.count.to_s})", edit_make_path(m), class: "make-link" %>
+            </li>
+          <% end %>
+          </ul>
+          <br>
+          </div>
+        <% end %>
+
     </div>
-    <div class="col-4 m-3">
-      <%= link_to "categories", categories_path, class:'btn btn-secondary' %>
-      One of two columns
-    </div>
+
+
     <!-- Force next columns to break to new line at md breakpoint and up -->
     <div class="w-100 d-none d-md-block"></div>
 
     <div class="col-4" style="border-style: solid; min-height: 200px;">
-      Developer paths/slugs:
-      <div class="row m-1 justify-content-center">
+      <%= render template: 'site_settings/index' %>
+    </div>
+    <div class="col-4 m-3">
+      reserved slugs:
+      <ul>
       <% ReservedSlugs::RESERVED_SLUGS.each do |s| %>
-          <%= link_to s, '/' + s, class:"col-3 card p-3 m-1" %>
+      <li>
+          <%= link_to '/' + s, '/' + s, class:"" %>
+          </li>
       <% end %>
-      </div>
+      </ul>
     </div>
 </div>

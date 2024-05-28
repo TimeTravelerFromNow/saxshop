@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Site settings</h1>
+
+
+<div class="row m-1 justify-content-center">
+  <%= link_to 'edit site settings', SiteSetting.active.present? ? edit_site_setting_path(SiteSetting.active) : new_site_setting_path, class: 'btn btn-success' %>
+</div>
+<% if SiteSetting.active.present? %>
+
+<div class="row m-1 justify-content-center">
+  <%= link_to 'google tag page', site_google_tag_path, class: 'btn btn-secondary' %>
+</div>
+
+<% end %>

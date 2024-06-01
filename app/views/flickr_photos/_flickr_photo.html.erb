@@ -1,3 +1,11 @@
 <div id="<%= dom_id flickr_photo %>">
   <%= sanitize strip_links flickr_photo.embed %>
+
+  <%= FlickrPhoto.flickr %>
+
+  <%= FlickrPhoto.user.username %>
+
+  <% flickr_photo.get_photo_set.each do |fp| %>
+    <%= image_tag fp.source %>
+  <% end %>
 </div>

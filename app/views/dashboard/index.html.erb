@@ -2,7 +2,18 @@
 
 <div class="row justify-content-center">
     <div  id="category-makes"  class="card col-4 m-3">
-      <h3> edit categories and makes</h3>
+      <h3> top bar content</h3>
+        <div class='row'>
+          <div class="col d-flex justify-content-center">
+            <%= link_to 'categories', categories_path, class: 'btn btn-secondary' %>
+
+          </div>
+          <div class="col d-flex justify-content-center">
+            <%= link_to 'makes', makes_path, class: 'btn btn-secondary' %>
+
+          </div>
+        </div>
+
         <% @categories.each do |c| %>
           <div class='border m-1'>
           /<%= c.slug %><br>

@@ -1,5 +1,5 @@
 class FlickrPhoto < ApplicationRecord
-
+  belongs_to :instrument
   # api
   def self.flickr
     if @flickr.nil?
@@ -13,13 +13,15 @@ class FlickrPhoto < ApplicationRecord
     @user ||= Flickr::User.new(params)
   end
 
-  def get_photo_set( set_id = nil)
+  # we can store the response for convenience
+  def photo_set
     begin
-      Flickr::Photoset.new(set_id || self.embed, api_key).getPhotos
+      Flickr::Photoset.new( self.embed, api_key).getPhotos
     rescue StandardError => e
-      e.to_s
+      nil
     end
   end
+
 
   private
 

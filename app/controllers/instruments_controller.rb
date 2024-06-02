@@ -63,6 +63,7 @@ class InstrumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instrument
       @instrument = Instrument.find(params[:id])
+      @instrument.flickr_photo = FlickrPhoto.find(params[:flickr_photo_id]) if params[:flickr_photo_id]
     end
 
     # Only allow a list of trusted parameters through.

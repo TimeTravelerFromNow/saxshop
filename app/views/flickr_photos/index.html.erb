@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Flickr photos</h1>
+<h1>Flickr photos and albums</h1>
 
 <div id="flickr_photos">
   <% @flickr_photos.each do |flickr_photo| %>
-    <%= render flickr_photo %>
+      <%= render 'flickr_photo_preview', flickr_photo: flickr_photo %>
     <p>
       <%= link_to "Show this flickr photo", flickr_photo %>
     </p>

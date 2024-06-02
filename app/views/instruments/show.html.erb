@@ -2,9 +2,23 @@
 
 <%= render @instrument %>
 
+<%= form_with model: @instrument do |form| %>
+  <%= form.label :flickr_photo_id %>
+  <%= form.select :flickr_photo_id,  FlickrPhoto.all %>
+
+  <%= form.submit 'update flickr_photo' %>
+<% end %>
+<% if @instrument.flickr_photo.present?%>
+  <%= render @instrument.flickr_photo %>
+<% end %>
 <div>
   <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %> |
   <%= link_to "Back to instruments", instruments_path %>
 
-  <%= button_to "delete this instrument", @instrument, method: :delete, data: {turbo_confirm: 'are you sure?'}, class:'btn btn-danger' %>
+  <% deletion_message = {} %>
+  <% if @instrument.flickr_photo.present? %>
+    deletion_message = {turbo_confirm: 'are you sure? deleting will also delete associated flickr_photo'}
+  <% end %>
+  <%= button_to "delete this instrument", @instrument, method: :delete,
+   data: deletion_message, class:'btn btn-danger' %>
 </div>

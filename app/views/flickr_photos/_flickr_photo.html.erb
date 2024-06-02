@@ -1,11 +1,17 @@
+
+<% photo_set ||= nil  %>
 <div id="<%= dom_id flickr_photo %>">
-  <%= sanitize strip_links flickr_photo.embed %>
 
-  <%= FlickrPhoto.flickr %>
+  <div class='container'>
+      <% if flickr_photo.photo_set.present? %>
+      <% flickr_photo.photo_set.each do |fp| %>
 
-  <%= FlickrPhoto.user.username %>
+          <%= image_tag fp.source %>
 
-  <% flickr_photo.get_photo_set.each do |fp| %>
-    <%= image_tag fp.source %>
-  <% end %>
+      <% end %>
+      <% else %>
+
+        <%= sanitize flickr_photo.embed %>
+      <% end %>
+  </div>
 </div>

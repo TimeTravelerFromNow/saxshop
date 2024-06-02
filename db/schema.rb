@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_020421) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_01_220539) do
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_020421) do
     t.text "embed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "instrument_id"
   end
 
   create_table "icons", force: :cascade do |t|
@@ -43,6 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_020421) do
     t.datetime "updated_at", null: false
     t.string "year_est"
     t.integer "make_id"
+    t.integer "flickr_photo_id"
+    t.index ["flickr_photo_id"], name: "index_instruments_on_flickr_photo_id"
     t.index ["make_id"], name: "index_instruments_on_make_id"
   end
 
@@ -64,6 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_020421) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "instruments", "flickr_photos"
   add_foreign_key "instruments", "makes"
   add_foreign_key "makes", "categories"
 end

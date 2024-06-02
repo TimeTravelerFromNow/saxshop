@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_220539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "instrument_id"
+    t.index ["instrument_id"], name: "index_flickr_photos_on_instrument_id"
   end
 
   create_table "icons", force: :cascade do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_220539) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "flickr_photos", "instruments"
   add_foreign_key "instruments", "flickr_photos"
   add_foreign_key "instruments", "makes"
   add_foreign_key "makes", "categories"

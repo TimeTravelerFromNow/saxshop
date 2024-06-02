@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard' => 'dashboard#index'
   resources :flickr_photos
+
+  patch 'instruments/:id/assign_flickr_photo' => 'instruments#update', as: :assign_flickr_photo
+
   resources :icons
   resources :instruments do
     resources :flickr_photos

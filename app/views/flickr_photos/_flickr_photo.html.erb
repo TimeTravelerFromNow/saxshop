@@ -1,9 +1,8 @@
 
-<% photo_set ||= nil  %>
 <div id="<%= dom_id flickr_photo %>">
 
   <div class='container'>
-      <% if flickr_photo.photo_set.present? %>
+      <% if flickr_photo.photo_set %>
       <% flickr_photo.photo_set.each do |fp| %>
 
           <%= image_tag fp.source %>
@@ -11,7 +10,7 @@
       <% end %>
       <% else %>
 
-        <%= sanitize flickr_photo.embed %>
+        <%= sanitizes flickr_photo.embed %>
       <% end %>
   </div>
 </div>

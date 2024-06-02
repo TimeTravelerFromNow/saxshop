@@ -1,9 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 
-
-
-<%= render @flickr_photo, photo_set: @photo_set %>
+<% if @flickr_photo.instrument.present? %>
+  <%= link_to instrument_path(@flickr_photo.instrument) do %>
+  <strong>belongs to:</strong>
+  <%= @flickr_photo.instrument.year || @flickr_photo.instrument.year_est %>
+  <%= @flickr_photo.instrument.manafacturer %>
+  <% end %>
+<% else %>
+  <small>doesnt belong to an instrument</small>
+<% end %>
 
 <% if @flickr_photo.photo_set.present? %>
 <p style="color: green">photo album detected</p>
@@ -11,6 +17,9 @@
 <% else %>
   No photoset detected: renders embed.
 <% end %>
+
+<%= render @flickr_photo, photo_set: @photo_set %>
+
 <div>
   <%= link_to "Edit this flickr photo", edit_flickr_photo_path(@flickr_photo) %> |
   <%= link_to "Back to flickr photos", flickr_photos_path %>

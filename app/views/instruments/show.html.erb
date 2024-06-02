@@ -1,24 +1,30 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row gx-2">
+    <div class="col d-flex justify-content-end">
+      <%= render @instrument %>
+    </div>
+    <div class="col">
+      <%= form_with model: @instrument, url: assign_flickr_photo_path, method: :patch do |form| %>
+        <%= form.label :flickr_photo_id %>
+        <%= form.select :flickr_photo_id, FlickrPhoto.all.where(:instrument_id.nil?).collect { |fp| fp.id } %>
 
-<%= render @instrument %>
+        <%= form.submit 'assign flickr_photo' %>
+      <% end %>
 
-<%= form_with model: @instrument do |form| %>
-  <%= form.label :flickr_photo_id %>
-  <%= form.select :flickr_photo_id,  FlickrPhoto.all %>
+      <% if @instrument.flickr_photo.present?%>
+        <strong>flickr_photo:</strong>
+        <%= render @instrument.flickr_photo %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <%= form.submit 'update flickr_photo' %>
-<% end %>
-<% if @instrument.flickr_photo.present?%>
-  <%= render @instrument.flickr_photo %>
-<% end %>
-<div>
-  <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %> |
+<div id='instrument_actions' class='d-flex justify-content-center'>
+  <%= link_to "Edit this instrument", edit_instrument_path(@instrument) %>
   <%= link_to "Back to instruments", instruments_path %>
 
-  <% deletion_message = {} %>
-  <% if @instrument.flickr_photo.present? %>
-    deletion_message = {turbo_confirm: 'are you sure? deleting will also delete associated flickr_photo'}
-  <% end %>
+
   <%= button_to "delete this instrument", @instrument, method: :delete,
-   data: deletion_message, class:'btn btn-danger' %>
+   data: @instrument.deletion_message, class:'btn btn-danger' %>
 </div>

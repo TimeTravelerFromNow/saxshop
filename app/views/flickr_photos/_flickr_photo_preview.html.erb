@@ -1,0 +1,25 @@
+
+<div id="<%= dom_id flickr_photo %>">
+
+  <div class='container'>
+      <% photo_set = flickr_photo.photo_set %>
+
+      <% if photo_set %>
+
+          <h5>album</h5>
+      <% photo_set.first(3).each do |fp| %>
+
+          <%= image_tag fp.source, style:'max-width:100px;' %>
+
+      <% end %>
+
+      <% if photo_set.count > 3 %>
+        <%= link_to 'show more photos...', flickr_photo_path(flickr_photo) %>
+      <% end %>
+      </div>
+
+      <% else %>
+        <%= sanitize strip_links flickr_photo.embed%>
+      <% end %>
+  </div>
+</div>

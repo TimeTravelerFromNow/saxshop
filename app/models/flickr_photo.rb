@@ -1,5 +1,5 @@
 class FlickrPhoto < ApplicationRecord
-  belongs_to :instrument
+  belongs_to :instrument, optional: true
   # api
   def self.flickr
     if @flickr.nil?

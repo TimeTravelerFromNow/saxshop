@@ -61,6 +61,7 @@ class FlickrPhotosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_flickr_photo
       @flickr_photo = FlickrPhoto.find(params[:id])
+      @flickr_photo.instrument = Instrument.find(params[:instrument_id]) if params[:instrument_id]
     end
 
     # Only allow a list of trusted parameters through.

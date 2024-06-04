@@ -60,6 +60,8 @@ task :setup do
     command %[test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml}]
 	
     # manage creds and secrets manually now
+    # should be ignored and safe to put secrets now
+    # git ignore test
     
     # Remove others-permission for config directory
     command %[chmod -R o-rwx config]

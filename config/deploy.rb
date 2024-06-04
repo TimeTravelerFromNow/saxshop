@@ -13,7 +13,7 @@ set :domain, 'sebastiandetering.com'
 set :user, fetch(:application_name)
 set :deploy_to, "/home/#{fetch(:user)}/app"
 set :repository, 'git@github.com:TimeTravelerFromNow/saxshop.git'
-set :branch, 'master'
+set :branch, 'main'
 set :rvm_use_path, '/etc/profile.d/rvm.sh'
 
 # Optional settings:

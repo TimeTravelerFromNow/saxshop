@@ -10,7 +10,8 @@
         <%= link_to '...', flickr_photo_path(flickr_photo), class:'triple-dot-link' %>
 
       <% else %>
-        <%= sanitize strip_links flickr_photo.embed%>
+        <strong>embed:</strong>
+        <%= flickr_photo.embed.first(4) %>
       <% end %>
   </div>
 </div>

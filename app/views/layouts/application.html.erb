@@ -22,9 +22,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <%= link_to "dashboard", dashboard_index_path, class:" nav-link" %>
-      </li>
 
       <% Category.all.each do |category| %>
       <li class="nav-item " data-controller='dropdown'>

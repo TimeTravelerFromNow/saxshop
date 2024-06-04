@@ -3,20 +3,21 @@
   <div class="row d-flex">
 
 
-<table id="<%= make.slug %>" border="2" cellpadding="5" cellspacing="5" width="930">
+<table id="<%= make.slug %>" class="m-auto" border="2" cellpadding="5" cellspacing="5" width="930">
 <tbody>
         <tr>
       <th colspan="8" bgcolor="#CDA54D" scope="col"> <h1 align="center"><strong><%= make.title %></strong></h1>
       </th>
       </tr>
         <tr>
-      <td width="113" bgcolor="#999999"><div align="center">Manufacturer</div></td>
+          <td width="113" bgcolor="#999999"><div align="center">Manufacturer</div></td>
           <td width="96" bgcolor="#999999"><div align="center">Model</div></td>
           <td width="61" bgcolor="#999999"><div align="center">Serial #</div></td>
           <td width="75" bgcolor="#999999"><div align="center">Condition</div></td>
           <td width="49" bgcolor="#999999"><div align="center">Year</div></td>
           <td width="50" bgcolor="#999999"><div align="center">Price</div></td>
           <td width="155" bgcolor="#999999"><div align="center">Comments</div></td>
+          <td width="40" bgcolor="#999999"><div align="center">link</div></td>
     </tr>
         <% make.instruments.each do |i| %>
             <tr>

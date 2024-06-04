@@ -25,7 +25,13 @@
 
   <div>
     <%= form.label :about, style: "display: block" %>
-    <%= form.text_area :about %>
+    <%= form.rich_text_area :about %>
+  </div>
+
+
+  <div>
+    <%= form.label :portrait, style: "display: block" %>
+    <%= form.file_field :portrait %>
   </div>
 
   <div>

@@ -1,0 +1,18 @@
+<div id="<%= dom_id instrument %>" class="instrument-preview">
+
+  <% if instrument.make.present? %>
+  <p class="make-link">
+  <%= instrument.make.title %>
+  </p>
+  <% end %>
+
+  <p>
+    <%= instrument.year_or_year_est %>
+
+    <%= instrument.manafacturer %>
+
+    <%= instrument.model_type %>
+  </p>
+
+
+</div>

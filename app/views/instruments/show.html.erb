@@ -1,20 +1,38 @@
 <p style="color: green"><%= notice %></p>
-<div class="container">
-  <div class="row gx-2">
+<div class="container ">
+  <div class="row gx-4">
     <div class="col d-flex justify-content-end">
       <%= render @instrument %>
     </div>
     <div class="col">
-      <%= form_with model: @instrument, url: assign_flickr_photo_path, method: :patch do |form| %>
-        <%= form.label :flickr_photo_id %>
-        <%= form.select :flickr_photo_id, FlickrPhoto.all.where(:instrument_id.nil?).collect { |fp| fp.id } %>
+      <% if !@instrument.flickr_photo.present? %>
+        <h5>flickr photo assigner</h5>
+        <% if FlickrPhoto.instrumentless.count > 0 %>
+        <div id="instrument_flickr_photo_assigner_form">
 
-        <%= form.submit 'assign flickr_photo' %>
-      <% end %>
+        <%= form_with model: @instrument, url: assign_flickr_photo_path, method: :patch do |form| %>
+          <%= form.label :flickr_photo_id %>
+          <%= form.select :flickr_photo_id, FlickrPhoto.instrumentless.collect { |fp| fp.id } %>
 
-      <% if @instrument.flickr_photo.present?%>
-        <strong>flickr_photo:</strong>
-        <%= render @instrument.flickr_photo %>
+          <%= form.submit 'assign flickr_photo' %>
+        <% end %>
+        </div>
+
+        <hr>
+        or create & add new flickr_photo album to instrument:
+        <% end %>
+      <div id="instrument_flickr_photo_adding_form">
+        <%= form_with model: [@instrument, FlickrPhoto], method: :post do |form| %>
+
+          <div class="form-group">
+            <%= form.label :embed %>
+            <%= form.text_area :embed %>
+          </div>
+          <%= form.submit 'create flickr_photo' %>
+        <% end %>
+      </div>
+      <% else %>
+        <%= link_to 'remove flickr_photo', instrument_flickr_photo_remove_path(@instrument, @instrument.flickr_photo), method: :patch, class:'btn btn-secondary' %>
       <% end %>
     </div>
   </div>
@@ -27,4 +45,15 @@
 
   <%= button_to "delete this instrument", @instrument, method: :delete,
    data: @instrument.deletion_message, class:'btn btn-danger' %>
+
+</div>
+<div class="container">
+
+  <div id="instrument_flickr_photo" class="justify-content">
+
+          <% if @instrument.flickr_photo.present?%>
+            <strong>flickr_photo:</strong>
+            <%= render @instrument.flickr_photo %>
+          <% end %>
+  </div>
 </div>

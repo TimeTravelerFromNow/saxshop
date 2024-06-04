@@ -6,10 +6,11 @@
 <% Instrument.all.where(make: nil).each do |ins| %>
   <div class='col'>
   <%= form_with(model: [@make, ins]) do |form| %>
+    <%= render 'instruments/instrument_preview', instrument: ins %>
+
     <%= form.hidden_field :make_slug, value: @make.slug %>
-    <div class='form-group '>
-    <%= form.submit  ins.manafacturer + ' | ' + ins.model_type , class:'btn btn-secondary mr-3'%>
-    </div>
+
+    <%= form.submit '+', class:'btn btn-light'%>
   <% end %>
   </div>
 <% end %>

@@ -1,15 +1,15 @@
 
 <div id="site-home" class="container">
 
-  <div class="row">
-    <div class="col">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5 ml-auto">
+      <%= image_tag SiteSetting.portrait, style: 'width: 240px;' %>
+      <br>
       <%= SiteSetting.contact %>
     </div>
-    <div class="col">
-
-    </div>
-    <div class="col">
-
+    <div id="main_content" class="col-3 m-3">
+      <h1><%= SiteSetting.motd %></h1>
+      <p><%= SiteSetting.about %></p>
     </div>
   </div>
 

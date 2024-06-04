@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_action :set_instrument, only: %i[ show edit update destroy unassign_flickr_photo ]
+  before_action :set_instrument, only: %i[ show edit update destroy remove_flickr_photo ]
   before_action :assign_relations, only: :update
   # GET /instruments or /instruments.json
   def index
@@ -8,6 +8,19 @@ class InstrumentsController < ApplicationController
 
   # GET /instruments/1 or /instruments/1.json
   def show
+  end
+
+  def remove_flickr_photo
+    @instrument.flickr_photo = nil
+    respond_to do |format|
+      if @instrument.save
+        format.html { redirect_to instrument_url(@instrument), notice: "removed the flickr photo successfully" }
+        format.json { render :show, status: :created, location: @instrument }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @instrument.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /instruments/new

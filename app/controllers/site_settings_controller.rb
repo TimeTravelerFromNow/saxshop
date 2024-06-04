@@ -70,6 +70,6 @@ class SiteSettingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def site_setting_params
-      params.require(:site_setting).permit(:google_tag, :motd, :about, :contact)
+      params.require(:site_setting).permit(:portrait, :google_tag, :motd, :about, :contact)
     end
 end

@@ -27,8 +27,21 @@
               opacity: 0.5;
             }
   }
+  body {
+  	font-family: "Trebuchet MS", Arial, sans-serif;
+  	// font-size: 100%;
+  	background-color: #252525;
+  }
+  #main_view {
+    background-color: #FEFEFE;
+  }
 }
 
+
+#navbar ul a:hover {
+	//background-color: #606060!important;
+	color: #FFFFFF!important;
+}
 
 #category-makes {
   @extend .p3 !optional;
@@ -39,18 +52,17 @@
 
 }
 
-#navbar ul a:hover {
-	//background-color: #606060!important;
-	color: #FFFFFF!important;
-}
-
 .make-link {
-  @extend .btn, .card, .p-1 !optional;
-  @extend .brass-bg;
+  @extend .card, .p-1 !optional;
+  @extend .brass-bg !optional;
 }
 
 .brass-bg {
   background-image: linear-gradient(to right, #e5b07f,#ebdcce,#d9c37f );
+}
+
+.triple-dot-link {
+  @extend .p-3 !optional;
 }
 
 .fl-menu {
@@ -74,4 +86,42 @@
         	//color: #FFFFFF!important;
         }
 
+}
+
+.instrument-preview {
+  background-color: $light;
+}
+
+#main_content {
+
+	width: 290px;
+
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+
+}
+
+#gradientbackground_tables {
+	background-color: #FFF;
+	width:956px;
+	padding-top:0px;
+	position: relative;
+	left:0px;
+	margin-bottom:0px;
+	background-repeat: repeat-x;
+	border-top-width: 2px;
+	border-right-width: medium;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #000;
+	border-right-color: #FFF;
+	border-bottom-color: #FFF;
+	border-left-color: #FFF;
+	background-image: url(images/p7exp_pbg.jpg);
 }

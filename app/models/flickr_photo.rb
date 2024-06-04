@@ -1,5 +1,7 @@
 class FlickrPhoto < ApplicationRecord
   belongs_to :instrument, optional: true
+  scope :instrumentless, -> { self.where(instrument: nil) }
+  before_save :update_photo_set_count
   # api
   def self.flickr
     if @flickr.nil?
@@ -18,10 +20,17 @@ class FlickrPhoto < ApplicationRecord
     begin
       Flickr::Photoset.new( self.embed, api_key).getPhotos
     rescue StandardError => e
-      nil
+      Rails.logger.info(e)
     end
   end
 
+  def update_photo_set_count
+    self.photo_set_count = self.photo_set.count || 0
+  end
+
+  def self.api_key_missing?
+    api_key.nil?
+  end
 
   private
 

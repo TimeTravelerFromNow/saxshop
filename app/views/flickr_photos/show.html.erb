@@ -8,17 +8,15 @@
   <%= @flickr_photo.instrument.manafacturer %>
   <% end %>
 <% else %>
-  <small>doesnt belong to an instrument</small>
+  <p>no instrument</p>
 <% end %>
 
-<% if @flickr_photo.photo_set.present? %>
+<% if @flickr_photo.photo_set_count > 0 %>
 <p style="color: green">photo album detected</p>
-
+<%= @flickr_photo.photo_set_count %> images
 <% else %>
-  No photoset detected: renders embed.
+  no photoset detected: renders embed.
 <% end %>
-
-<%= render @flickr_photo, photo_set: @photo_set %>
 
 <div>
   <%= link_to "Edit this flickr photo", edit_flickr_photo_path(@flickr_photo) %> |
@@ -26,3 +24,7 @@
 
   <%= button_to "Destroy this flickr photo", @flickr_photo, method: :delete %>
 </div>
+<br>
+
+<h5>flickr_photo:</h5>
+<%= render @flickr_photo, photo_set: @photo_set %>

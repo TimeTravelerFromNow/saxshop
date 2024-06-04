@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :icons
   resources :instruments do
-    resources :flickr_photos
+    resources :flickr_photos do
+      match :remove, via: [:get, :post]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -32,8 +34,6 @@ Rails.application.routes.draw do
 
   get 'categories' => 'categories#index', as: 'categories'
   resources :categories, except: [:index], param: :slug, path: '/' do
-    resources :makes, param: :slug do
-      resources :instruments
-    end
+    resources :makes, param: :slug
   end
 end

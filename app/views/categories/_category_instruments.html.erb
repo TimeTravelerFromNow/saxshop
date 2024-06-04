@@ -1,12 +1,8 @@
-<div id="<%= dom_id make %>">
-<div class="container">
-  <div class="row d-flex">
 
-
-<table id="<%= make.slug %>" border="2" cellpadding="5" cellspacing="5" width="930">
+<table id="<%= dom_id category %>" border="2" cellpadding="5" cellspacing="5" width="930">
 <tbody>
         <tr>
-      <th colspan="8" bgcolor="#CDA54D" scope="col"> <h1 align="center"><strong><%= make.title %></strong></h1>
+      <th colspan="8" bgcolor="#CDA54D" scope="col"> <h1 align="center"><strong><%= category.title %></strong></h1>
       </th>
       </tr>
         <tr>
@@ -17,8 +13,14 @@
           <td width="49" bgcolor="#999999"><div align="center">Year</div></td>
           <td width="50" bgcolor="#999999"><div align="center">Price</div></td>
           <td width="155" bgcolor="#999999"><div align="center">Comments</div></td>
+          <td width="40" bgcolor="#999999"><div align="center">Link</div></td>
     </tr>
-        <% make.instruments.each do |i| %>
+       <% category.makes.each do |c| %>
+       <tr>
+       <th colspan="8" bgcolor="#CDA54D" scope="col"> <h3 align="center"><strong><%= c.title %></strong></h3>
+       </th>
+       </tr>
+        <% c.instruments.each do |i| %>
             <tr>
 
             <td width="113"><div align="center"> <%= link_to i do %><%= i.manafacturer %><% end %></div></td>
@@ -32,8 +34,6 @@
 
             </tr>
         <% end %>
+        <% end %>
 
       </tbody></table>
-</div>
-  </div>
-</div>

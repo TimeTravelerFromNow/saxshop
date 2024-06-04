@@ -3,6 +3,10 @@
 <%= render @category %>
 
 <ul>
+
+<%= render 'category_instruments', category: @category %>
+
+<h3>makes</h3>
 <% @category.makes.each do |make| %>
   <li>
     <%= link_to make.title, category_make_path(@category,make) %>
@@ -14,5 +18,5 @@
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete, data: { turbo_confirm: "are you sure?"} %>
+  <%= button_to "Destroy this category", @category, method: :delete, data: { turbo_confirm: "are you sure? will destroy related makes."} %>
 </div>

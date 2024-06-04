@@ -4,7 +4,10 @@
 
 <div>
   <%= link_to "Edit this make", edit_make_path(@make) %> |
-  <%= link_to "Back to makes", makes_path %>
+  <%= link_to "Back to makes", makes_path %> |
+  <% if @make.category %>
+  <%= link_to @make.category.title, category_path(@make.category) %>
+  <% end %>
 
   <%= button_to "Destroy this make", @make, method: :delete, data: { turbo_confirm: "are you sure?"} %>
 </div>

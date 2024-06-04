@@ -16,3 +16,5 @@ pin "@floating-ui/utils/dom", to: "@floating-ui--utils--dom.js" # @0.2.2
 
 pin "bootstrap" # @5.1.3
 pin "@popperjs/core", to:  "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js" # @2.11.8
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

@@ -291,6 +291,7 @@ DEPENDENCIES
   debug
   flickr.rb (~> 1.2, >= 1.2.1)
   importmap-rails
+  irb (~> 1.7)
   jbuilder
   mina
   pg

@@ -54,13 +54,6 @@ task :setup do
   timeout: 5000]
     command %[test -e #{path_database_yml} || echo "#{database_yml}" > #{path_database_yml}]
 
-    # Create secrets.yml if it doesn't exist
-    path_secrets_yml = "config/secrets.yml"
-    secrets_yml = %[production:\n  secret_key_base:\n    #{`bundle exec rake secret`.strip}]
-    command %[test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml}]
-	
-
-    
     # Remove others-permission for config directory
     command %[chmod -R o-rwx config]
   end
@@ -70,7 +63,7 @@ end
 desc "Deploys the current version to the server."
 task :deploy do
   # uncomment this line to make sure you pushed your local branch to the remote origin
-  # invoke :'git:ensure_pushed'
+  invoke :'git:ensure_pushed'
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
@@ -82,7 +75,7 @@ task :deploy do
     invoke :'deploy:cleanup'
 
     on :launch do
-      # command "sudo systemctl restart #{fetch(:user)}"
+      command "sudo systemctl restart #{fetch(:user)}"
     end
   end
 

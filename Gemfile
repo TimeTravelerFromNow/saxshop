@@ -11,9 +11,6 @@ gem "sassc-rails"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -45,7 +42,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+#gem "image_processing", "~> 1.2"
+
 gem 'xml-simple', '~> 1.1.9'
 gem 'flickr.rb', '~> 1.2', '>= 1.2.1'
 
@@ -68,6 +66,8 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
+  # Use sqlite3 as the database for Active Record
+  gem "sqlite3", "~> 1.4"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end

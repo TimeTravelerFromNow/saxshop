@@ -11,7 +11,7 @@ class SiteSetting < ApplicationRecord
 
   def self.portrait
     portrait_image = active.portrait if active.present? && active.portrait.persisted?
-    portrait_image ||= 'STEVE_PORTRAIT'
+    portrait_image ||= 'STEVE_PORTRAIT.png'
   end
 
   def self.contact

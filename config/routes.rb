@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+#  scope :admin do
   resources :site_settings
   get 'site/home'
   get 'site/map'
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
   resources :makes, param: :slug do
     resources :instruments
   end
-
 
   get 'dashboard/index'
   get 'dashboard' => 'dashboard#index'
@@ -33,7 +35,10 @@ Rails.application.routes.draw do
   root "site#home"
 
   get 'categories' => 'categories#index', as: 'categories'
-  resources :categories, except: [:index], param: :slug, path: '/' do
+  post 'categories' => 'categories#create'
+
+  resources :categories, except: [:index, :create], param: :slug, path: '/' do
     resources :makes, param: :slug
   end
+#  end # scope admin
 end

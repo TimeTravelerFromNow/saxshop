@@ -5,7 +5,8 @@ class CreateInstruments < ActiveRecord::Migration[7.1]
       t.string :model_type
       t.string :serial_no
       t.string :condition
-      t.datetime :year
+      t.integer :year
+      t.string :year_est
       t.integer :price
       t.text :details
 

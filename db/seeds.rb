@@ -84,12 +84,12 @@ saprano_saxes.each do |s|
   next if Instrument.find_by(serial_no: s[2]).present?
 # remove dollar sign to make integer
   i = Instrument.new(manafacturer: s[0], model_type: s[1], serial_no: s[2], condition: s[3], year: s[4], price: s[5].tr('^0-9', ''), details: s[6])
-  timetest = Time.find_zone('Alaska').local(s[4].to_i,1,1)
+  timetest = s[4].to_i
 
   i.year = timetest if timetest
   i.year = nil if timetest.year < 1000
   if !i.year.present?
-    i.year_est = s[4]
+    i.year_est = s[3]
   end
   i.save
 end

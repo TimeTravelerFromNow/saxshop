@@ -1,0 +1,45 @@
+<%= form_with(model: [:admin, site_setting]) do |form| %>
+  <% if site_setting.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(site_setting.errors.count, "error") %> prohibited this site_setting from being saved:</h2>
+
+      <ul>
+        <% site_setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <a href="https://support.google.com/webmasters/answer/9008080?sjid=18182352504580280781-NC" target="_blank" rel='noreferrer noopener'>site claim guide</a>
+
+    <%= form.label :google_tag, style: "display: block" %>
+    <%= form.text_area :google_tag %>
+  </div>
+
+  <div>
+    <%= form.label :motd, style: "display: block" %>
+    <%= form.text_field :motd %>
+  </div>
+
+  <div>
+    <%= form.label :about, style: "display: block" %>
+    <%= form.rich_text_area :about %>
+  </div>
+
+
+  <div>
+    <%= form.label :portrait, style: "display: block" %>
+    <%= form.file_field :portrait %>
+  </div>
+
+  <div>
+    <%= form.label :contact, style: "display: block" %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

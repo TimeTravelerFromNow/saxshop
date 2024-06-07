@@ -1,0 +1,23 @@
+<h1>Editing category</h1>
+
+<%= render "form", category: @category %>
+
+<br>
+
+<div>
+  <%= link_to "Show this category", [:admin, @category] %> |
+  <%= link_to "Back to categories", admin_categories_path %>
+</div>
+<hr>
+
+<h3>Create a Make/Subclass</h3>
+<%= form_with(model: [:admin, @category, Make]) do |form| %>
+
+  <%= form.label :slug %>
+  <%= form.text_field :slug %>
+  <br>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.submit 'create', class: 'btn btn-secondary'%>
+<% end %>

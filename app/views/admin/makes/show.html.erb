@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @make %>
+
+<div>
+  <%= link_to "Edit this make", [:edit, :admin, @make] %> |
+  <%= link_to "Back to makes", admin_makes_path %> |
+  <% if @make.category %>
+  <%= link_to @make.category.title, admin_category_path(@make.category) %>
+  <% end %>
+
+  <%= button_to "Destroy this make", [:admin, @make], method: :delete, data: { turbo_confirm: "are you sure?"} %>
+</div>

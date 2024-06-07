@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
+ get 'site/google_tag'
 
- namespace "admin" do
+ get 'site/home'
+ root 'site#home'
+
+ get '/admin' => 'admin/dashboard#index'
+
+ namespace 'admin' do
   resources :site_settings
   get 'site/home'
   get 'site/map'
   get 'sites' => 'site_settings#index'
-  get 'site/google_tag'
 
   get 'makes/:slug/pick' => 'makes#pick', param: :slug, as: :make_pick
 
@@ -30,9 +35,8 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
   # Defines the root path route ("/")
-  root "site#home"
 
   get 'categories' => 'categories#index', as: 'categories'
   post 'categories' => 'categories#create'
@@ -41,4 +45,14 @@ Rails.application.routes.draw do
     resources :makes, param: :slug
   end
  end # scope admin
+
+
+  resources :categories, only: [:index, :show], param: :slug, path: '/' do
+    resources :makes, only: [:index, :show], param: :slug
+  end
+
+  resources :makes, only: [:index, :show], param: :slug do
+    resources :instruments, only: [:index, :show]
+  end
+
 end

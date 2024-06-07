@@ -1,0 +1,10 @@
+<h1>Editing instrument</h1>
+
+<%= render "form", instrument: @instrument %>
+
+<br>
+
+<div>
+  <%= link_to "Show this instrument", [:admin, @instrument] %> |
+  <%= link_to "Back to instruments", admin_instruments_path %>
+</div>

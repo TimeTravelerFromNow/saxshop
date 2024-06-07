@@ -1,0 +1,10 @@
+<h1>Editing flickr photo</h1>
+
+<%= render "form", flickr_photo: @flickr_photo %>
+
+<br>
+
+<div>
+  <%= link_to "Show this flickr photo", [:edit, :admin, @flickr_photo] %> |
+  <%= link_to "Back to flickr photos", admin_flickr_photos_path %>
+</div>

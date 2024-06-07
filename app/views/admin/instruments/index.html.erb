@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Instruments (<%= Instrument.all.count %>)</h1>
+
+<div id="instruments" class="container">
+  <div class="row gx-1 d-flex">
+    <% @instruments.order(manafacturer: :asc).each do |instrument| %>
+      <%= link_to [:admin, instrument], class:'col' do %>
+      <%= render 'instrument_preview', instrument: instrument %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "New instrument", new_admin_instrument_path %>

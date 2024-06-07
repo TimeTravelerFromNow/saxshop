@@ -1,0 +1,18 @@
+
+<h2> add to <%= @make.title %></h2>
+
+<div class="container-md">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<% Instrument.all.where(make: nil).each do |ins| %>
+  <div class='col'>
+  <%= form_with(model: [:admin, @make, ins]) do |form| %>
+    <%= render 'instruments/instrument_preview', instrument: ins %>
+
+    <%= form.hidden_field :make_slug, value: @make.slug %>
+
+    <%= form.submit '+', class:'btn btn-light'%>
+  <% end %>
+  </div>
+<% end %>
+</div>
+</div>

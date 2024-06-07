@@ -23,18 +23,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <% Category.all.each do |category| %>
-      <li class="nav-item " data-controller='dropdown'>
-        <a class="nav-link fl-button dropdown-toggle" data-dropdown-target="flButton" data-action='click->dropdown#clicked' role="button" aria-haspopup="true" aria-expanded="false">
-          <%= category.title %>
-        </a>
-        <div class='fl-menu' style='display: none;' data-dropdown-target="flMenu" aria-labelledby="navbarDropdown">
-          <% category.makes.each do |make| %>
-          <%= link_to make.title, category_make_path(category,make), class:'dropdown-item fl-item' %>
-          <% end %>
-        </div>
-      </li>
-      <% end %>
 
     </ul>
   </div>
@@ -50,7 +38,7 @@
         <li class="nav-item "> <%= link_to "home", root_path, class:"nav-link px-2 text-muted" %></li>
 
         <% Make.all.each do |make| %>
-          <li class="nav-item mx-2"> <%= link_to make.title, make_path(make), class:"nav-link px-2 text-muted" %></li>
+          <li class="nav-item mx-2"> <%= link_to make.title, admin_make_path(make), class:"nav-link px-2 text-muted" %></li>
         <% end %>
       </ul>
 

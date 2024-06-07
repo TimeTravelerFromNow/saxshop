@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @site_setting %>
+
+<div>
+  <%= link_to "Edit this site setting", [:edit, :admin, @site_setting] %> |
+  <%= link_to "Back to site settings", admin_site_settings_path %>
+
+  <%= button_to "Destroy this site setting", [:admin, @site_setting], method: :delete, data: {turbo_confirm: 'are you sure?'} %>
+</div>

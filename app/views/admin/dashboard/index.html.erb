@@ -1,0 +1,66 @@
+
+<div class="row justify-content-center">
+    <div  id="category-makes"  class="card col-4 mb-3">
+      <h3> top bar content</h3>
+        <div class='row'>
+          <div class="col d-flex justify-content-center">
+            <%= link_to 'categories', admin_categories_path, class: 'btn btn-secondary' %>
+
+          </div>
+          <div class="col d-flex justify-content-center">
+            <%= link_to 'makes', admin_makes_path, class: 'make-link btn btn-secondary' %>
+          </div>
+        </div>
+
+        <% @categories.each do |c| %>
+          <div class=' m-1'>
+          /<%= c.slug %><br>
+
+          <%= link_to c.title + " (#{c.instruments.count.to_s})", edit_admin_category_path(c), class:"btn btn-secondary"  %>
+          <ul>
+          <% c.makes.each do |m| %>
+          <li>
+            <%= link_to m.title + " (#{m.instruments.count.to_s})", edit_admin_make_path(m), class: "make-link btn btn-secondary m-1" %>
+            </li>
+          <% end %>
+          </ul>
+
+          </div>
+        <% end %>
+
+    </div>
+
+    <div class="card col-4 mb-3">
+      <h3> instruments</h3>
+      <ul>
+      <% Instrument.order(created_at: :desc).first(4).each do |i| %>
+      <li>
+        <%= link_to [:admin, i] do %>
+          <%= render 'admin/instruments/instrument_preview', instrument: i %>
+        <% end %>
+      </li>
+      <% end %>
+      <%= (link_to '...', admin_instruments_path, class:'triple-dot-link') if Instrument.count > 4 %>
+      </ul>
+      <h3> teachers </h3>
+      coming soon...
+    </div>
+
+
+    <!-- Force next columns to break to new line at md breakpoint and up -->
+    <div class="w-100 d-none d-md-block"></div>
+
+    <div class="col-4" style="border-style: solid; min-height: 200px;">
+      <%= render template: 'admin/site_settings/index' %>
+    </div>
+    <div class="col-4 m-3">
+      reserved slugs:
+      <ul>
+      <% ReservedSlugs::RESERVED_SLUGS.each do |s| %>
+        <li>
+          <%= link_to '/' + s, '/' + s, class:"" %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+</div>

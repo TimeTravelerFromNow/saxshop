@@ -1,0 +1,11 @@
+<h1>Editing make</h1>
+
+<%= render "form", make: @make %>
+
+<br>
+
+<div>
+  <%= link_to "Show this make", [:admin, @make] %> |
+  <%= link_to "Back to makes", admin_makes_path %> |
+  <%= link_to 'add instruments', admin_make_pick_path(@make) %>
+</div>

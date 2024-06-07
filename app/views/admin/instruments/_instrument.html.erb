@@ -1,0 +1,43 @@
+<div id="<%= dom_id instrument %>" class="card p-3">
+  <% if instrument.make.present? %>
+  <h4 class="make-link">
+  <%= instrument.make.title %>
+  </h4>
+  <% end %>
+
+  <p>
+    <strong>Manafacturer:</strong>
+    <%= instrument.manafacturer %>
+  </p>
+
+  <p>
+    <strong>Model type:</strong>
+    <%= instrument.model_type %>
+  </p>
+
+  <p>
+    <strong>Serial no:</strong>
+    <%= instrument.serial_no %>
+  </p>
+
+  <p>
+    <strong>Condition:</strong>
+    <%= instrument.condition %>
+  </p>
+
+  <p>
+    <strong>year:</strong>
+    <%= instrument.year_or_year_est %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= instrument.price %>
+  </p>
+
+  <p>
+    <strong>Details:</strong>
+    <%= instrument.details %>
+  </p>
+
+</div>

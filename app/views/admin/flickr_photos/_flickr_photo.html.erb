@@ -1,0 +1,22 @@
+
+<div id="<%= dom_id flickr_photo %>">
+  <% if FlickrPhoto.api_key_missing? %>
+  <p style="color: red;">flickr photo api_key missing, check application credentials</p>
+  <% end %>
+  <div class='container'>
+
+      <% if flickr_photo.photo_set %>
+      <div class="row d-flex gx-4 justify-content-center">
+
+          <% flickr_photo.photo_set.each do |fp| %>
+
+            <%= image_tag fp.source, class:'col mb-1' %>
+
+          <% end %>
+      </div>
+      <% else %>
+
+        <%= sanitize flickr_photo.embed %>
+      <% end %>
+  </div>
+</div>

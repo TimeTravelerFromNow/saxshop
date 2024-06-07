@@ -1,0 +1,25 @@
+
+<div id="<%= dom_id flickr_photo %>" class="card">
+
+  <div class='container'>
+      <p>
+      <% if flickr_photo.instrument.present? %>
+        <strong>belongs to:</strong>
+        <%= flickr_photo.instrument.year || flickr_photo.instrument.year_est %>
+        <%= flickr_photo.instrument.manafacturer %>
+      <% end %>
+      </p>
+
+      <% if flickr_photo.photo_set_count > 0 %>
+
+
+        <h5>album</h5>
+        <%= flickr_photo.instrument.model_type if flickr_photo.instrument.present? %>
+        <%= link_to '...', admin_flickr_photo_path(flickr_photo), class:'triple-dot-link' %>
+
+      <% else %>
+        <strong>embed:</strong>
+        <%= flickr_photo.embed.first(4) %>...<%= flickr_photo.embed.last(4) %>
+      <% end %>
+  </div>
+</div>

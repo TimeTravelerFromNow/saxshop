@@ -1,4 +1,4 @@
-<%= form_with(model: instrument) do |form| %>
+<%= form_with(model: [:admin, instrument]) do |form| %>
   <% if instrument.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(instrument.errors.count, "error") %> prohibited this instrument from being saved:</h2>

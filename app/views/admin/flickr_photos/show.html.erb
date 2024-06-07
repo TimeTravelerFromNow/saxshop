@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+
+<% if @flickr_photo.instrument.present? %>
+  <%= link_to admin_instrument_path(@flickr_photo.instrument) do %>
+  <strong>belongs to:</strong>
+  <%= @flickr_photo.instrument.year || @flickr_photo.instrument.year_est %>
+  <%= @flickr_photo.instrument.manafacturer %>
+  <% end %>
+<% else %>
+  <p>no instrument</p>
+<% end %>
+
+<br>
+<% if @flickr_photo.photo_set_count > 0 %>
+<p style="color: green">photo album detected</p>
+<%= @flickr_photo.photo_set_count %> images
+<% else %>
+  <p>
+    no photoset detected: renders embed.
+  </p>
+  <p>
+    Paste the id found at the end of https://www.flickr.com/photos/47387225@N00/albums/#####
+  </p>
+<% end %>
+
+
+<div>
+  <%= link_to "Edit this flickr photo", edit_admin_flickr_photo_path(@flickr_photo) %> |
+  <%= link_to "Back to flickr photos", admin_flickr_photos_path %>
+
+  <%= button_to "Destroy this flickr photo", [:admin, @flickr_photo], method: :delete %>
+</div>
+<br>
+
+<h5>flickr_photo:</h5>
+<%= render @flickr_photo, photo_set: @photo_set %>

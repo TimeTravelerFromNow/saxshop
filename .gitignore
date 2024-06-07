@@ -38,3 +38,5 @@
 
 /config/credentials/production.key
 
+# going to hardcode a default password here
+/app/models/concerns/default_credentials.rb

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-#  scope :admin do
+ namespace "admin" do
   resources :site_settings
   get 'site/home'
   get 'site/map'
@@ -40,5 +40,5 @@ Rails.application.routes.draw do
   resources :categories, except: [:index, :create], param: :slug, path: '/' do
     resources :makes, param: :slug
   end
-#  end # scope admin
+ end # scope admin
 end

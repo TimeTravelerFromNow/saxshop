@@ -22,6 +22,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if @admin_path %>
+        <li class="nav-item ">
+            <%= link_to 'admin', admin_dashboard_path, style:'color: red;'%>
+        </li>
+      <% end %>
 
       <% Category.all.each do |category| %>
       <li class="nav-item " data-controller='dropdown'>
@@ -30,7 +35,11 @@
         </a>
         <div class='fl-menu' style='display: none;' data-dropdown-target="flMenu" aria-labelledby="navbarDropdown">
           <% category.makes.each do |make| %>
-          <%= link_to make.title, category_make_path(category,make), class:'dropdown-item fl-item' %>
+            <% if @admin_path %>
+              <%= link_to make.title, admin_category_make_path(category,make), class:'dropdown-item fl-item' %>
+            <% else %>
+              <%= link_to make.title, category_make_path(category,make), class:'dropdown-item fl-item' %>
+            <% end %>
           <% end %>
         </div>
       </li>

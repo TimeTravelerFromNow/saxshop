@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
- get 'site/google_tag'
-
- get 'site/home'
- root 'site#home'
-
- get '/admin' => 'admin/dashboard#index'
-
  namespace 'admin' do
   resources :site_settings
   get 'site/home'
@@ -46,13 +39,20 @@ Rails.application.routes.draw do
   end
  end # scope admin
 
+  get 'site/google_tag'
 
-  resources :categories, only: [:index, :show], param: :slug, path: '/' do
-    resources :makes, only: [:index, :show], param: :slug
-  end
+  get 'site/home'
+  root 'site#home'
+
+  get '/admin' => 'admin/dashboard#index'
 
   resources :makes, only: [:index, :show], param: :slug do
     resources :instruments, only: [:index, :show]
   end
 
+  resources :instruments, only: [:index, :show]
+
+  resources :categories, only: [:index, :show], param: :slug, path: '/' do
+    resources :makes, only: [:index, :show], param: :slug
+  end
 end

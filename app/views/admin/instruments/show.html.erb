@@ -39,7 +39,12 @@
 </div>
 
 <div id='instrument_actions' class='d-flex justify-content-center'>
+  <% if @instrument.make.present? %>
+    <%= link_to 'back to ' << @instrument.make.title, make_path(@instrument.make), class: 'btn btn-primary make-link' %>
+  <% end %>
+  
   <%= link_to "Edit this instrument", edit_admin_instrument_path(@instrument) %>
+
   <%= link_to "Back to instruments", admin_instruments_path %>
 
 

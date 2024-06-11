@@ -22,14 +22,14 @@
         <% make.instruments.each do |i| %>
             <tr>
 
-            <td width="113"><div align="center"> <%= link_to i do %><%= i.manafacturer %><% end %></div></td>
+            <td width="113"><div align="center"> <%= link_to [:admin, i] do %><%= i.manafacturer %><% end %></div></td>
             <td width="96"><div align="center">  <%= i.model_type %></div></td>
             <td width="61"><div align="center">  <%= i.serial_no %></div></td>
             <td width="75"><div align="center">  <%= i.condition %></div></td>
             <td width="49"><div align="center">  <%= i.year.present? ? i.year.year : i.year_est %></div></td>
             <td width="50"><div align="center">  <%= i.price %></div></td>
             <td width="155"><div align="center"> <%= i.details %></div></td>
-            <td width="50"> <%= link_to 'show', i, class:'btn btn-primary' %></td>
+            <td width="50"> <%= link_to 'admin show', [:admin, i], class:'btn btn-primary' %></td>
 
             </tr>
         <% end %>
